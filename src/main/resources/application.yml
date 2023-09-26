@@ -2,8 +2,10 @@
 server:
   port: 8181
 
-# ?? ????? ?? ????
+
 spring:
+
+  # ?? ????? ?? ????
   devtools:
     livereload:
       enabled: true
@@ -11,3 +13,9 @@ spring:
       enabled: true
     thymeleaf:
       cache: false
+
+  #???? ??
+  mvc:
+    view:
+      prefix: "resources/templates/"
+      suffix: .html

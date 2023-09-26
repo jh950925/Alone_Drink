@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<div>
+    <form action="@{/joinMember}" method="post">
+        <div>
+            <label>이름 : </label>
+            <input type="text" id="memberName" name="memberName">
+        </div>
+        <div>
+            <label>나이 : </label>
+            <input type="text" id="memberAge" name="memberAge">
+        </div>
+        <div>
+            <label>전화번호 : </label>
+            <input type="text" id="memberPhNum" name="memberPhNum">
+        </div>
+        <div>
+            <label>성별 : </label>
+            <input type="text" id="memberSex" name="memberSex">
+        </div>
+        <div>
+            <label>이메일 : </label>
+            <input type="text" id="memberEmail" name="memberEmail">
+        </div>
+        <input type="submit" id="joinMember" value="저장">
+    </form>
+</div>
+</body>
+</html>
