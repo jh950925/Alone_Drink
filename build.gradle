@@ -34,6 +34,9 @@ dependencies {
 
     /**  스웨거 impl**/
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+    /** 서버 재시작 없이 html, css 변경하기 **/
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
 }
 
 tasks.named('test') {
