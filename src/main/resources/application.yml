@@ -19,3 +19,17 @@ spring:
     view:
       prefix: "resources/templates/"
       suffix: .html
+
+  # MYSQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project_01
+    username: jh950925
+    password: rla123
+
+  # JPA
+  jap:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      format_sql: true
