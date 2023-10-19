@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Tag(name = "예제 API", description = "Swagger 테스트용 API")
+@Tag(name = "회원API", description = "회원 관련 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
