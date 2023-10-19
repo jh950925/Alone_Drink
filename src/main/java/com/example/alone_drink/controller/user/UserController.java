@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class UserController {
 
+        private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
         @Operation(summary = "회원가입 페이지 이동", description = "회원가입 페이지로 이동합니다..")
         @GetMapping("joinPage")
         public String joinPage() {
-
-            return "";
+                log.info("logger = {}", log);
+                return "";
         }
 
         @Operation(summary = "회원가입", description = "회원가입 실행")

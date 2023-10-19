@@ -4,8 +4,6 @@ server:
 
 
 spring:
-
-  # ?? ????? ?? ????
   devtools:
     livereload:
       enabled: true
@@ -17,6 +15,8 @@ spring:
   #???? ??
   mvc:
     view:
+      encoding: UTF-8
+      cache: false
       prefix: "resources/templates/"
       suffix: .html
 
