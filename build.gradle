@@ -44,6 +44,9 @@ dependencies {
     /** MYSQL **/
     //runtimeOnly("com.mysql:mysql-connector-j")
 
+    /** 시큐리티 **/
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
 }
 
 tasks.named('test') {
