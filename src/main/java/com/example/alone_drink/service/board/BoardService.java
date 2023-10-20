@@ -17,9 +17,8 @@ public class BoardService {
 
     // 전체 리트스 조회
     public List<BoardEntity> boardList() {
-        List<BoardEntity> list = boardRepository.findAll();
 
-        return list;
+        return boardRepository.findAll();
     }
     
     // 게시물 저장
@@ -27,10 +26,10 @@ public class BoardService {
 
         LocalDate date = LocalDate.now();
 
-        int id = 1;
+
 
         BoardEntity entity = new BoardEntity();
-        entity.setBoardId((long) ++id);
+//        entity.setBoardId((long) ++id);
         entity.setBoardTitle(vo.getBoardTitle());
         entity.setBoardCont(vo.getBoardCont());
         entity.setBoardWrId("test");
@@ -42,7 +41,19 @@ public class BoardService {
 
         return boardRepository.save(entity);
     }
-    // 게시물 수정
-    
-    // 게시물 삭제
+
+    // 게시글 수정
+    public BoardEntity boardUpdate(BoardVo vo) {
+        BoardEntity entity = new BoardEntity();
+
+
+
+        return boardRepository.save(entity);
+    }
+
+    // 게시글 삭제
+    public void boardDelete(BoardVo vo) {
+        boardRepository.deleteById(vo.getBoardId());
+    }
+
 }

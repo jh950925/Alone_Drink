@@ -7,5 +7,7 @@ public class BoardVo {
 
     private String boardTitle;
     private String boardCont;
+    private String boardWrId;
+    private Long BoardId;
 
 }
