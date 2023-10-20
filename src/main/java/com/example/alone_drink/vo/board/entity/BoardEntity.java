@@ -15,9 +15,10 @@ import lombok.experimental.SuperBuilder;
 public class BoardEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //id값이 null일 경우 자동
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) //id값이 null일 경우 자동
     @Column(name = "BOARD_ID")
     private Long boardId;
+
 
     @Column(name = "BOARD_TITLE")
     private String boardTitle;
