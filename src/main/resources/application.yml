@@ -12,7 +12,7 @@ spring:
     thymeleaf:
       cache: false
 
-  #???? ??
+  #thymeleaf
   mvc:
     view:
       encoding: UTF-8
@@ -28,8 +28,9 @@ spring:
     password: rla123
 
   # JPA
-  jap:
-    show-sql: true
-    hibernate:
-      ddl-auto: none
-      format_sql: true
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: update
+        format_sql: true
+        show-sql: true
