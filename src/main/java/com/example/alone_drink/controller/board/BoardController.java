@@ -32,15 +32,31 @@ public class BoardController {
         return "board/boardList";
     }
 
-    @PostMapping("/create")
-    public void create(BoardVo vo) {
-        // 화면에서 model로 받아온 vo 셋팅 예시로
-        vo.setBoardTitle("testTitle");
-        vo.setBoardCont("testCont");
-        log.info("/createPage");
-        BoardEntity entity = boardService.boardSave(vo);
+    @GetMapping("/createPage")
+    public String createPage() {
+        return "board/boardCreate";
+    }
 
-        log.info(entity.toString());
+    @PostMapping("/save")
+    public void create(@ModelAttribute("boardVo") BoardVo boardVo) {
+        log.info("create Post");
+
+        BoardEntity entity = new BoardEntity();
+        entity.setBoardTitle(boardVo.getBoardTitle());
+        entity.setBoardCont(boardVo.getBoardCont());
+
+
+        log.info(boardVo.toString());
+
+        log.info(entity.getBoardTitle());
+        log.info(entity.getBoardCont());
+        // 화면에서 model로 받아온 vo 셋팅 예시로
+//        vo.setBoardTitle("testTitle");
+//        vo.setBoardCont("testCont");
+//
+//        BoardEntity entity = boardService.boardSave(vo);
+//
+//        log.info(entity.toString());
 
     }
 
@@ -53,5 +69,5 @@ public class BoardController {
     public void delete() {
 
     }
-    
+
 }
