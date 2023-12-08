@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class UserVo {
 
-    private String userId;              // 사용자 ID
-    private String userNm;              // 사용자 이름
-    private String userAge;             // 사용자 나이
-    private String userSexCd;           // 사용자 성별 코드
-    private String userPhNum;           // 사용자 전화 번호
-    private String userNknm;            // 사용자 닉네임
-    private String regDt;               // 등록일
-    private String modDt;               // 수정일
+    private String userId;				// 유저 아이디
+    private String userPass;            // 유저 비밀 번호
+    private String userNickNm;          // 유저 닉네임
+    private String userEmail;           // 유저 이메일
+    private String userName;            // 유저 이름
+    private String userPhoneNo;         // 유저 전화 번호
+    private String userAge;             // 유저 나이
+    private String userSex;             // 유저 성별
 
 }
