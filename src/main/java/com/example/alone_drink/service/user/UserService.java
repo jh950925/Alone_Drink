@@ -24,9 +24,9 @@ public interface UserService {
     /**
      * 회원 탈퇴
      * @param id
-     * @return UserEntity
+     * @return int
      */
-    public UserEntity deleteUser(String id);
+    public int deleteUser(String id);
 
     /**
      * 로그인

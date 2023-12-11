@@ -56,8 +56,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity deleteUser(String id) {
-        return null;
+    public int deleteUser(String id) {
+        int result = 0;
+            UserInfoEntity userInfoEntity = userInfoRepository.findById(id).orElse(null);
+
+        if (userInfoEntity != null) {
+            userInfoRepository.deleteById(id);
+            userRepository.deleteById(userInfoEntity.getUserEntity().getUserNo());
+            result = 1;
+        }
+
+        return result;
     }
 
     @Override
