@@ -7,7 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -36,11 +36,11 @@ public class UserEntity {
     @Comment("생성일")
     @CreatedDate
     @Column(name = "REG_DT")
-    private Date regDt;
+    private LocalDateTime regDt;
 
     @Comment("수정일")
     @LastModifiedDate
     @Column(name = "MOD_DT")
-    private Date modDt;
+    private LocalDateTime modDt;
 
 }
