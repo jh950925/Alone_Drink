@@ -39,8 +39,10 @@ public class UserApiController {
      * @return ResponseEntity
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Map<String, Object>> updateUser(@PathVariable String id) {
+    public ResponseEntity<Map<String, Object>> updateUser(@PathVariable("id") String id, UserVo userVo) {
         Map<String, Object> data = new HashMap<>();
+
+        data.put("userInfo", userService.updateUser(id, userVo));
 
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }

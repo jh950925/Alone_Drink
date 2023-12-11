@@ -43,8 +43,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity updateUser(String id) {
-        return null;
+    public UserInfoEntity updateUser(String id, UserVo userVo) {
+        if (userInfoRepository.findById(id).orElse(null) == null) {
+            return null;
+        }
+
+        UserInfoEntity vo = userVo.toEntity();
+        vo.setUserId(id);
+        vo.setComnGrpCd("1");
+
+        return userInfoRepository.save(vo);
     }
 
     @Override

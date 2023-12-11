@@ -1,6 +1,7 @@
 package com.example.alone_drink.service.user;
 
 import com.example.alone_drink.vo.user.entity.UserEntity;
+import com.example.alone_drink.vo.user.entity.UserInfoEntity;
 import com.example.alone_drink.vo.user.vo.UserVo;
 
 import java.util.Map;
@@ -18,7 +19,7 @@ public interface UserService {
      * @param id
      * @return UserEntity
      */
-    public UserEntity updateUser(String id);
+    public UserInfoEntity updateUser(String id, UserVo userVo);
 
     /**
      * 회원 탈퇴
