@@ -1,8 +1,8 @@
 package com.example.alone_drink.service.user;
 
-import com.example.alone_drink.repository.user.UserInfoRepository;
 import com.example.alone_drink.repository.user.UserRepository;
 import com.example.alone_drink.repository.user.UserSnsInfoRepository;
+import com.example.alone_drink.repository.user.userInfoRepository;
 import com.example.alone_drink.vo.user.entity.UserEntity;
 import com.example.alone_drink.vo.user.entity.UserInfoEntity;
 import com.example.alone_drink.vo.user.vo.UserVo;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserInfoRepository userInfoRepository;
+    private final userInfoRepository userInfoRepository;
     private final UserSnsInfoRepository userSnsInfoRepository;
 
     @Override
@@ -29,13 +29,11 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserTypeCd("B");
         userEntity.setComnGrpCd("1");
-
         UserEntity target = userRepository.save(userEntity);
 
         UserInfoEntity userInfoEntity = userVo.toEntity();
         userInfoEntity.setComnGrpCd("1");
         userInfoEntity.setUserEntity(target);
-
         UserInfoEntity target2 = userInfoRepository.save(userInfoEntity);
 
         map.put("user", target);

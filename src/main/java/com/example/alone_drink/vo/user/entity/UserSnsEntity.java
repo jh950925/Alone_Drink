@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "TB_USER_SNS_INFO")
 public class UserSnsEntity {
 
