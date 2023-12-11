@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,16 +44,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoEntity updateUser(String id, UserVo userVo) {
-        if (userInfoRepository.findById(id).orElse(null) == null) {
-            return null;
+    public int updateUser(String id, UserVo userVo) {
+        int result = 0;
+        if (userInfoRepository.findById(id).orElse(null) != null) {
+            result = 1;
+            UserInfoEntity vo = userVo.toEntity();
+            vo.setUserId(id);
+            vo.setComnGrpCd("1");
+
+            userInfoRepository.updateUser(id, vo.getUserPass(), vo.getUserName(), vo.getUserPhoneNo(), vo.getUserSexCd(), LocalDateTime.now());
         }
-
-        UserInfoEntity vo = userVo.toEntity();
-        vo.setUserId(id);
-        vo.setComnGrpCd("1");
-
-        return userInfoRepository.save(vo);
+        return  result;
     }
 
     @Override

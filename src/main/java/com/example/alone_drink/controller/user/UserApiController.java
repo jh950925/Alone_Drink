@@ -42,7 +42,8 @@ public class UserApiController {
     public ResponseEntity<Map<String, Object>> updateUser(@PathVariable("id") String id, UserVo userVo) {
         Map<String, Object> data = new HashMap<>();
 
-        data.put("userInfo", userService.updateUser(id, userVo));
+        int result = userService.updateUser(id, userVo);
+        data.put("userInfo", "UPDATE SUCCESS");
 
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
