@@ -1,6 +1,9 @@
 package com.example.alone_drink.service.user;
 
 import com.example.alone_drink.vo.user.entity.UserEntity;
+import com.example.alone_drink.vo.user.vo.UserVo;
+
+import java.util.Map;
 
 public interface UserService {
 
@@ -8,7 +11,7 @@ public interface UserService {
      * 회원 가입
      * @return UserEntity
      */
-    public UserEntity joingUser();
+    public Map<String,Object> joingUser(UserVo userVoe);
 
     /**
      * 회원 수정
