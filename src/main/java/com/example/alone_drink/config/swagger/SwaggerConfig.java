@@ -19,6 +19,6 @@ class SwaggerConfig {
         return new Info()
                 .title("혼술 커뮤니티")
                 .description("개인용 포트폴리오")
-                .version("1.0.0");
+                .version("0.1.0");
     }
 }

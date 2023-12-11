@@ -2,6 +2,8 @@ package com.example.alone_drink.controller.user;
 
 import com.example.alone_drink.service.user.UserServiceImpl;
 import com.example.alone_drink.vo.user.vo.UserVo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -11,10 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/auth")
 @Slf4j
+@Tag(name = "UserApi",description = "유저 API Document")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/auth")
 public class UserApiController {
 
     private final UserServiceImpl userService;
@@ -23,7 +26,9 @@ public class UserApiController {
      * 회원 가입
      * @return ResponseEntity
      */
+
     @PostMapping("/join")
+    @Operation(summary = "회원가입", description = "받아온 회원정보로 회원가입 실행")
     public ResponseEntity<Map<String, Object>> joinUser(UserVo userVo){
         Map<String, Object> result = userService.joingUser(userVo);
 
@@ -38,6 +43,7 @@ public class UserApiController {
      * @param id
      * @return ResponseEntity
      */
+    @Operation(summary = "회원수정", description = "받아온 Id 기준해서 회원정보 수정")
     @PutMapping("/update/{id}")
     public ResponseEntity<Map<String, Object>> updateUser(@PathVariable("id") String id, UserVo userVo) {
         Map<String, Object> data = new HashMap<>();
@@ -53,6 +59,7 @@ public class UserApiController {
      * @param id
      * @return ResponseEntity
      */
+    @Operation(summary = "회원탈퇴", description = "ID기준 회원 탈퇴")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Object>> deleteUser(@PathVariable String id) {
         Map<String, Object> data = new HashMap<>();
@@ -68,6 +75,7 @@ public class UserApiController {
      * @param id
      * @return ResponseEntity
      */
+    @Operation(summary = "로그인", description = "회원로그인")
     @GetMapping("/login/{id}")
     public ResponseEntity<Map<String, Object>> loginUser(@PathVariable String id) {
         Map<String, Object> data = new HashMap<>();
@@ -80,6 +88,7 @@ public class UserApiController {
      * @param id
      * @return ResponseEntity
      */
+    @Operation(summary = "로그아웃", description = "회원 로그아웃")
     @GetMapping("/logout/{id}")
     public ResponseEntity<Map<String, Object>> logoutUser(@PathVariable String id) {
         Map<String, Object> data = new HashMap<>();
@@ -87,3 +96,4 @@ public class UserApiController {
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
 }
+
