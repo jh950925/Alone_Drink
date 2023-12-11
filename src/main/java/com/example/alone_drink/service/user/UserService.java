@@ -11,7 +11,7 @@ public interface UserService {
      * 회원 가입
      * @return UserEntity
      */
-    public Map<String,Object> joingUser(UserVo userVoe);
+    public Map<String,Object> joingUser(UserVo userVo);
 
     /**
      * 회원 수정

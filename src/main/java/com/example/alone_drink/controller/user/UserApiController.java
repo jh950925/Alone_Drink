@@ -1,5 +1,7 @@
 package com.example.alone_drink.controller.user;
 
+import com.example.alone_drink.service.user.UserServiceImpl;
+import com.example.alone_drink.vo.user.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,16 +17,20 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserApiController {
 
+    private final UserServiceImpl userService;
 
     /**
      * 회원 가입
      * @return ResponseEntity
      */
     @PostMapping("/join")
-    public ResponseEntity<Map<String, Object>> joinUser(){
-        Map<String, Object> data = new HashMap<>();
+    public ResponseEntity<Map<String, Object>> joinUser(UserVo userVo){
+        Map<String, Object> result = userService.joingUser(userVo);
 
-        return ResponseEntity.status(HttpStatus.OK).body(data);
+        result.put("user", result.get("user"));
+        result.put("userInfo", result.get("userInfo"));
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     /**

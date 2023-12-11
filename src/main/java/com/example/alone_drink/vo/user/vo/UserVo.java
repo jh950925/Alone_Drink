@@ -1,5 +1,6 @@
 package com.example.alone_drink.vo.user.vo;
 
+import com.example.alone_drink.vo.user.entity.UserInfoEntity;
 import lombok.Data;
 
 @Data
@@ -14,4 +15,7 @@ public class UserVo {
     private String userAge;             // 유저 나이
     private String userSex;             // 유저 성별
 
+    public UserInfoEntity toEntity(){
+        return new UserInfoEntity(userId,userPass,userNickNm,userEmail,userName,userPhoneNo,userAge,userSex);
+    }
 }

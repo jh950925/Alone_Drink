@@ -72,23 +72,23 @@ public class UserInfoEntity {
     private Date modDt;
 
     @Builder
-    private UserInfoEntity(
+    public UserInfoEntity(
             String userId,
             String userPass,
-            String userNicknm,
+            String userNickNm,
             String userEmail,
             String userName,
             String userPhoneNo,
             String userAge,
-            String userSexCd) {
+            String userSex) {
         this.userId = userId;
         this.userPass = userPass;
-        this.userNicknm = userNicknm;
+        this.userNicknm = userNickNm;
         this.userEmail = userEmail;
         this.userName = userName;
         this.userPhoneNo = userPhoneNo;
         this.userAge = userAge;
-        this.userSexCd = userSexCd;
+        this.userSexCd = userSex;
     }
 
 }
