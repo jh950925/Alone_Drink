@@ -67,7 +67,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <!-- Navbar Brand -->
-        <a class="navbar-brand" href="#">메인이동</a>
+        <a class="navbar-brand" th:href="@{/}">메인이동</a>
 
         <!-- Navbar Toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,20 +123,12 @@
                     </form>
                     <!-- 로그인 폼 끝 -->
                     <div class="mt-3">
-                        <p>계정이 없으신가요? <a href="#">회원가입</a></p>
+                        <a th:href="@{/auth/joinPage}">회원가입</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- 하단 메뉴 영역 -->
-<div class="container mt-4 navbar-bottom">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- Navbar 내용 작성 -->
-        <a class="navbar-brand" href="#">하단 메뉴</a>
-    </nav>
 </div>
 </body>
 </html>
