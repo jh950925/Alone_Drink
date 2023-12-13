@@ -29,13 +29,18 @@ public class UserApiController {
 
     @PostMapping("/join")
     @Operation(summary = "회원가입", description = "받아온 회원정보로 회원가입 실행")
-    public ResponseEntity<Map<String, Object>> joinUser(UserVo userVo){
+    public ResponseEntity<Map<String, Object>> joinUser(@RequestBody UserVo userVo){
+        System.out.println("회원가입");
+        
         Map<String, Object> result = userService.joingUser(userVo);
 
-        result.put("user", result.get("user"));
-        result.put("userInfo", result.get("userInfo"));
+        System.out.println(userVo.toString());
 
-        return ResponseEntity.status(HttpStatus.OK).body(result);
+//        result.put("user", result.get("user"));
+//        result.put("userInfo", result.get("userInfo"));
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(result);
+        return null;
     }
 
     /**

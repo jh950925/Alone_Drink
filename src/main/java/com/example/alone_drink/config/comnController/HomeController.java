@@ -1,4 +1,4 @@
-package com.example.alone_drink.config.comn;
+package com.example.alone_drink.config.comnController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

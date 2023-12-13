@@ -55,12 +55,16 @@ public class UserInfoEntity {
     @Column(length =3 , name = "USER_AGE")
     private String userAge;
 
+    @Comment("생년월일")
+    @Column(length =8, name = "USER_YMD")
+    private String userYmd;
+
     @Comment("공통그룹코드")
-    @Column(length =20 ,nullable = false, name = "COMN_GRP_CD")
+    @Column(length = 20, nullable = false, name = "COMN_GRP_CD")
     private String comnGrpCd;
 
     @Comment("유저성별코드")
-    @Column(length =1 ,nullable = false, name = "USER_SEX_CD")
+    @Column(length = 1, nullable = false, name = "USER_SEX_CD")
     private String userSexCd;
 
     @Comment("생성일")
@@ -81,6 +85,7 @@ public class UserInfoEntity {
             String userEmail,
             String userName,
             String userPhoneNo,
+            String userYmd,
             String userAge,
             String userSex) {
         this.userId = userId;
@@ -89,6 +94,7 @@ public class UserInfoEntity {
         this.userEmail = userEmail;
         this.userName = userName;
         this.userPhoneNo = userPhoneNo;
+        this.userYmd = userYmd;
         this.userAge = userAge;
         this.userSexCd = userSex;
     }

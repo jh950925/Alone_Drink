@@ -25,7 +25,10 @@ public class UserVo {
     
     @Schema(description = "유저전화번호")
     private String userPhoneNo;         // 유저 전화 번호
-    
+
+    @Schema(description = "유저생년월일")
+    private String userYmd;
+
     @Schema(description = "유저나이")
     private String userAge;             // 유저 나이
     
@@ -33,6 +36,7 @@ public class UserVo {
     private String userSex;             // 유저 성별
 
     public UserInfoEntity toEntity(){
-        return new UserInfoEntity(userId,userPass,userNickNm,userEmail,userName,userPhoneNo,userAge,userSex);
+        return new UserInfoEntity(userId,userPass,userNickNm,userEmail,userName,userPhoneNo,userYmd,userAge,userSex);
     }
+
 }

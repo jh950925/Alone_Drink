@@ -1,8 +1,10 @@
 package com.example.alone_drink.controller.user;
 
+import com.example.alone_drink.config.utils.CalendarUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,14 @@ public class UserController {
      * @return String
      */
     @GetMapping("/joinPage")
-    public String joinPage() {
+    public String joinPage(Model model) {
+        log.info("회원가입 페이지 이동");
 
-        return "";
+        model.addAttribute("years", CalendarUtil.getYears());
+        model.addAttribute("months", CalendarUtil.getMonths());
+        model.addAttribute("days", CalendarUtil.getDays());
+
+        return "user/joinUser";
     }
 
     /**
