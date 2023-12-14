@@ -110,10 +110,10 @@
                 <div class="card-body">
                     <h5 class="card-title">로그인</h5>
                     <!-- 로그인 폼 -->
-                    <form>
+                    <form id="formLogin">
                         <div class="mb-3">
-                            <label for="username" class="form-label">아이디</label>
-                            <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요">
+                            <label for="userId" class="form-label">아이디</label>
+                            <input type="text" class="form-control" id="userId" placeholder="아이디를 입력하세요">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">비밀번호</label>
@@ -124,6 +124,8 @@
                     <!-- 로그인 폼 끝 -->
                     <div class="mt-3">
                         <a th:href="@{/auth/joinPage}">회원가입</a>
+<!--                        <a th:href="">회원수정</a>-->
+<!--                        <a th:href="">회원탈퇴</a>-->
                     </div>
                 </div>
             </div>
@@ -131,4 +133,31 @@
     </div>
 </div>
 </body>
+<script>
+    {
+        /**
+         * 로그인 function 실행
+         */
+        const formLogin = document.getElementById("formLogin");
+        const urlLogin = "/api/auth/login/";
+
+        formLogin.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            let userId   = document.getElementById("userId");
+            let userPass = document.getElementById("userPass");
+
+            let param = {
+                userId   : userId,
+                userPass : userPass
+            };
+
+            console.log(JSON.stringify(param));
+
+            // fetch(urlLogin + userId, {
+            //
+            // });
+        })
+    }
+</script>
 </html>
