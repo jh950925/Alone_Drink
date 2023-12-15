@@ -38,16 +38,16 @@ public class UserController {
     @GetMapping("/updatePage/{id}")
     public String updatePage(@PathVariable String id) {
 
-        return "";
+        return "user/updateUser";
     }
 
-    /**
-     * 로그인 페이지 이동
-     * @return String
-     */
-    @GetMapping("/loginPage")
-    public String loginPage() {
-
-        return "";
-    }
+//    /**
+//     * 로그인 페이지 이동
+//     * @return String
+//     */
+//    @GetMapping("/loginPage")
+//    public String loginPage() {
+//
+//        return "";
+//    }
 }

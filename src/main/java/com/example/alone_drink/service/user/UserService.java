@@ -1,6 +1,5 @@
 package com.example.alone_drink.service.user;
 
-import com.example.alone_drink.vo.user.entity.UserEntity;
 import com.example.alone_drink.vo.user.vo.UserVo;
 
 import java.util.Map;
@@ -29,16 +28,16 @@ public interface UserService {
 
     /**
      * 로그인
-     * @param id
+     * @param userVo
      * @return UserEntity
      */
-    public UserEntity login(String id);
+    public int login(UserVo userVo);
 
     /**
      * 로그 아웃
-     * @param id
+     * @param userVo
      * @return UserEntity
      */
-    public UserEntity logout(String id);
+    public int logout(UserVo userVo);
 
 }

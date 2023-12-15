@@ -40,6 +40,8 @@ public class UserServiceImpl implements UserService {
         map.put("user", target);
         map.put("userInfo", target2);
 
+        // session 등록
+
         return map;
     }
 
@@ -78,14 +80,28 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    /**
+     * 로그인
+     * @param userVo 
+     * @return
+     */
     @Override
-    public UserEntity login(String id) {
-        return null;
+    public int login(UserVo userVo) {
+        UserInfoEntity userInfoEntity = userVo.toEntity();
+
+        UserInfoEntity target = userInfoRepository.findById(userInfoEntity.getUserId()).orElse(null);
+        UserInfoEntity target2 = userInfoRepository.findById(userInfoEntity.getUserPass()).orElse(null);
+
+        if (target == null || target2 == null) {
+            return 0;
+        }
+
+        return 1;
     }
 
     @Override
-    public UserEntity logout(String id) {
-        return null;
+    public int logout(UserVo userVo) {
+        return 0;
     }
 
 }

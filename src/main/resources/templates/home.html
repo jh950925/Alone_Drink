@@ -113,11 +113,11 @@
                     <form id="formLogin">
                         <div class="mb-3">
                             <label for="userId" class="form-label">아이디</label>
-                            <input type="text" class="form-control" id="userId" placeholder="아이디를 입력하세요">
+                            <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">비밀번호</label>
-                            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+                            <label for="userPass" class="form-label">비밀번호</label>
+                            <input type="password" class="form-control" id="userPass" name="userPass" placeholder="비밀번호를 입력하세요">
                         </div>
                         <button type="submit" class="btn btn-primary">로그인</button>
                     </form>
@@ -139,13 +139,13 @@
          * 로그인 function 실행
          */
         const formLogin = document.getElementById("formLogin");
-        const urlLogin = "/api/auth/login/";
+        const urlLogin = "/api/auth/login";
 
         formLogin.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            let userId   = document.getElementById("userId");
-            let userPass = document.getElementById("userPass");
+            let userId   = document.getElementById("userId").value;
+            let userPass = document.getElementById("userPass").value;
 
             let param = {
                 userId   : userId,
@@ -153,10 +153,21 @@
             };
 
             console.log(JSON.stringify(param));
+            console.log(urlLogin + userId);
 
-            // fetch(urlLogin + userId, {
-            //
-            // });
+            fetch(urlLogin, {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(param)
+            }).then(res => {
+                alert("로그인 성공");
+
+            }).catch((error) => {
+                console.log(error);
+                alert("에러가 발생하였습니다. ");
+            });
         })
     }
 </script>

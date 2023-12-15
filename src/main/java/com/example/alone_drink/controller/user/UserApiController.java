@@ -22,6 +22,7 @@ public class UserApiController {
 
     private final UserServiceImpl userService;
 
+
     /**
      * 회원 가입
      * @return ResponseEntity
@@ -34,13 +35,10 @@ public class UserApiController {
         
         Map<String, Object> result = userService.joingUser(userVo);
 
-        System.out.println(userVo.toString());
+        result.put("user", result.get("user"));
+        result.put("userInfo", result.get("userInfo"));
 
-//        result.put("user", result.get("user"));
-//        result.put("userInfo", result.get("userInfo"));
-//
-//        return ResponseEntity.status(HttpStatus.OK).body(result);
-        return null;
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     /**
@@ -77,13 +75,20 @@ public class UserApiController {
 
     /**
      * 로그인
-     * @param id
+     * @param userVo
      * @return ResponseEntity
      */
     @Operation(summary = "로그인", description = "회원로그인")
-    @GetMapping("/login/{id}")
-    public ResponseEntity<Map<String, Object>> loginUser(@PathVariable String id) {
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody UserVo userVo) {
         Map<String, Object> data = new HashMap<>();
+
+        log.info("로그인");
+
+        log.info("userId={}",userVo.getUserId());
+        log.info("userPass={}",userVo.getUserPass());
+
+        data.put("loginData", userService.login(userVo));
 
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
