@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>혼술커뮤니티</title>
+    <style>
+        body {
+            background-color: #F5F5F5; /* 밝은 회색 배경색 */
+            color: #333333; /* 어두운 회색 텍스트 색상 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #FFFFFF; /* 흰색 배경색 */
+            border: 1px solid #DDDDDD; /* 연한 회색 테두리 색상 */
+            border-radius: 5px;
+            width: 300px; /* Adjust the width as needed */
+        }
+
+        .card-title {
+            color: #3CB371; /* 라이트 시그널 그린 계열 텍스트 색상 */
+        }
+
+        .btn-primary {
+            background-color: #3CB371; /* 라이트 시그널 그린 계열 버튼 배경색 */
+            border-color: #3CB371; /* 라이트 시그널 그린 계열 버튼 테두리 색상 */
+        }
+
+        .btn-primary:hover {
+            background-color: #2E8B57; /* 다크 시그널 그린 계열 버튼 배경색 (Hover 시) */
+            border-color: #2E8B57; /* 다크 시그널 그린 계열 버튼 테두리 색상 (Hover 시) */
+        }
+    </style>
+</head>
+<body>
+<div class="card mt-4">
+    <div class="card-body">
+        <h5 class="card-title">로그인</h5>
+        <form id="formLogin">
+            <div class="mb-3">
+                <label for="userId" class="form-label">아이디</label>
+                <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요">
+            </div>
+            <div class="mb-3">
+                <label for="userPass" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" id="userPass" name="userPass" placeholder="비밀번호를 입력하세요">
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnLoginLogout">
+                <span th:if="${hasUserCookie}">로그아웃</span>
+                <span th:unless="${hasUserCookie}">로그인</span>
+            </button>
+        </form>
+        <div class="mt-3">
+            <!-- Add any additional content here -->
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    {
+        /**
+         * 로그인 function 실행
+         */
+        const formLogin = document.getElementById("formLogin");
+        const urlLogin = "/api/auth/login";
+        const isLogin = document.getElementById("btnLoginLogout");
+        formLogin.addEventListener("submit", (e) => {
+            if(isLogin){
+                alert("로그아웃");
+            }else{
+                e.preventDefault();
+
+                let userId   = document.getElementById("userId").value;
+                let userPass = document.getElementById("userPass").value;
+
+                let param = {
+                    userId   : userId,
+                    userPass : userPass
+                };
+
+                console.log(JSON.stringify(param));
+                console.log(urlLogin + userId);
+
+                fetch(urlLogin, {
+                    method : "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(param)
+                }).then(res => {
+                    alert("로그인 성공");
+
+                }).catch((error) => {
+                    console.log(error);
+                    alert("에러가 발생하였습니다. ");
+                });
+            }
+        })
+    }
+</script>
+</html>
