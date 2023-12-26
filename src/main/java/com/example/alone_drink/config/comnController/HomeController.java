@@ -10,7 +10,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String mainView(HttpServletRequest request) {
-//        Cookie cookie = new Cookie("userCookie",null);
         return "login";
     }
 }

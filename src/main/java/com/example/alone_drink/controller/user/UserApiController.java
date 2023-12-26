@@ -73,37 +73,5 @@ public class UserApiController {
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
 
-    /**
-     * 로그인
-     * @param userVo
-     * @return ResponseEntity
-     */
-    @Operation(summary = "로그인", description = "회원로그인")
-    @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody UserVo userVo) {
-        Map<String, Object> data = new HashMap<>();
-
-        log.info("로그인");
-
-        log.info("userId={}",userVo.getUserId());
-        log.info("userPass={}",userVo.getUserPass());
-
-        data.put("loginData", userService.login(userVo));
-
-        return ResponseEntity.status(HttpStatus.OK).body(data);
-    }
-
-    /**
-     * 로그아웃
-     * @param id
-     * @return ResponseEntity
-     */
-    @Operation(summary = "로그아웃", description = "회원 로그아웃")
-    @GetMapping("/logout/{id}")
-    public ResponseEntity<Map<String, Object>> logoutUser(@PathVariable String id) {
-        Map<String, Object> data = new HashMap<>();
-
-        return ResponseEntity.status(HttpStatus.OK).body(data);
-    }
 }
 

@@ -80,21 +80,13 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
-    /**
-     * 로그인
-     * @param userVo 
-     * @return
-     */
     @Override
     public int login(UserVo userVo) {
         UserInfoEntity userInfoEntity = userVo.toEntity();
 
         UserInfoEntity target = userInfoRepository.findById(userInfoEntity.getUserId()).orElse(null);
-        UserInfoEntity target2 = userInfoRepository.findById(userInfoEntity.getUserPass()).orElse(null);
 
-        if (target == null || target2 == null) {
-            return 0;
-        }
+        if (target == null) { return 0; }
 
         return 1;
     }
