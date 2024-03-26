@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
     
     //회원가입
-    //회원수정
-    //회원탈퇴
+    //ID찾기
+    //PASS찾기
     //로그인
     //로그아웃
+
 }
