@@ -1,47 +1,49 @@
 package com.example.alone_drink.controller.user;
 
 import com.example.alone_drink.common.pageUrl.PageUrl;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-@Slf4j
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/user")
 public class UserController {
 
+    private static final String VIEW_PATH = PageUrl.PATH_VIEW_USER;
+
     /**
-     * 회원가입 페이지 이동
-     * @return String View
+     * 회원가입 화면이동
+     * @return String
      */
-    @GetMapping("/joinPage")
-    public String mvCreateUser(){
-        return PageUrl.PATH_VIEW_USER + "/create";
+    @GetMapping("/add/view")
+    public String mvUserAddView() {
+        return VIEW_PATH + "/userAdd";
     }
 
     /**
-     * 로그인 페이지 이동
-     * @return String View
+     * 회원ID,PASS 찾기 화면이동
+     * @return String
      */
-    @GetMapping("/loginPage")
-    public String mvLoginUser() {
-        return PageUrl.PATH_VIEW_USER + "/login";
+    @GetMapping("/search/view")
+    public String mvUserSearchView() {
+        return VIEW_PATH + "/userSearch";
     }
 
     /**
-     * 회원 수정 페이지 이동
-     * @param userId - 사용자 아이디
-     * @return String View
+     * 회원 ID 찾기 화면이동
+     * @return String
      */
-    @GetMapping("/updatePage/{userId}")
-    public ModelAndView mvModifyUser(@PathVariable("userId") String userId) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(PageUrl.PATH_VIEW_USER + "/modify");
-        modelAndView.addObject("userId", userId);
-        return modelAndView;
+    @GetMapping("/search/id/view")
+    public String mvUserSearchIdView() {
+        return VIEW_PATH + "/userSearchId";
     }
 
+    /**
+     * 회원 PASS 찾기 화면이동
+     * @return String
+     */
+    @GetMapping("/search/ass/view")
+    public String mvUserSearchPassView() {
+        return VIEW_PATH + "/userSearchPass";
+    }
 }
