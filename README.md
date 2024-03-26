@@ -29,7 +29,7 @@
 
 1. mysql
 
-![ERD](https://github.com/jh950925/alone_drink/assets/49939169/48c1f7c9-afd9-4e59-8e94-158cb59c9c15)
+![ERD](https://github.com/jh950925/alone_drink/assets/49939169/baa62f31-7562-4cde-979f-53d6f284e117)
 
 
 # [형상 관리]
