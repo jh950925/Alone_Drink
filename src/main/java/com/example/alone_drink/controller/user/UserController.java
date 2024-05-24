@@ -21,15 +21,6 @@ public class UserController {
     }
 
     /**
-     * 회원ID,PASS 찾기 화면이동
-     * @return String
-     */
-    @GetMapping("/search/view")
-    public String mvUserSearchView() {
-        return VIEW_PATH + "/userSearch";
-    }
-
-    /**
      * 회원 ID 찾기 화면이동
      * @return String
      */
@@ -42,7 +33,7 @@ public class UserController {
      * 회원 PASS 찾기 화면이동
      * @return String
      */
-    @GetMapping("/search/ass/view")
+    @GetMapping("/search/pass/view")
     public String mvUserSearchPassView() {
         return VIEW_PATH + "/userSearchPass";
     }
