@@ -1,11 +1,13 @@
 package com.example.alone_drink.controller.user;
 
 import com.example.alone_drink.common.pageUrl.PageUrl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@Slf4j
 @RequestMapping("/user")
 public class UserController {
 
@@ -17,6 +19,8 @@ public class UserController {
      */
     @GetMapping("/add/view")
     public String mvUserAddView() {
+        log.info("class={}, method=mvUserAddView is called", this.getClass().getName());
+        log.info("VIEW_PATH={}",VIEW_PATH);
         return VIEW_PATH + "/userAdd";
     }
 
