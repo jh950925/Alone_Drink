@@ -1,4 +1,4 @@
-package com.example.alone_drink.service.user;
+package com.example.alone_drink.serviceImpl.user;
 
 import com.example.alone_drink.common.http.WebClientService;
 import lombok.RequiredArgsConstructor;
