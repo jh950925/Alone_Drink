@@ -50,6 +50,9 @@ dependencies {
 
     /** WebClient **/
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    /** Email **/
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 tasks.named('test') {
     useJUnitPlatform()
