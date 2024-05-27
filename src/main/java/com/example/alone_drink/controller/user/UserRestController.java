@@ -1,13 +1,17 @@
 package com.example.alone_drink.controller.user;
 
+import com.example.alone_drink.config.annotation.ResponseApiCode;
+import com.example.alone_drink.vo.dto.user.UserInfoDto;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 사이트 내부 RestController
+ */
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
@@ -20,12 +24,7 @@ public class UserRestController {
             , description = "회원 정보가 저장됩니다."
             , tags = "User Api Controller"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+    @ResponseApiCode
     @PostMapping("/add/data")
     public void userAdd(){
 
@@ -38,12 +37,7 @@ public class UserRestController {
             , description = "사용자의 ID를 찾습니다.."
             , tags = "User Api Controller"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+    @ResponseApiCode
     @PostMapping("/search/id/data")
     public void userSearchId(){
 
@@ -56,12 +50,7 @@ public class UserRestController {
             , description = "사용자의 PassWord를 찾습니다."
             , tags = "User Api Controller"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+    @ResponseApiCode
     @PostMapping("/search/pass/data")
     public void userSearchPass(){
 
@@ -74,12 +63,7 @@ public class UserRestController {
             , description = "로그인 하기."
             , tags = "User LogIn / LogOut"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+    @ResponseApiCode
     @PostMapping("/login/data")
     public void logIn(){
 
@@ -92,15 +76,11 @@ public class UserRestController {
             , description = "로그아웃 하기"
             , tags = "User LogIn / LogOut"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+    @ResponseApiCode
     @PostMapping("/logout/data")
-    public void logout(){
-
+    public void logout(@RequestBody UserInfoDto userInfoDto){
+        log.info("login");
+        log.info("UserInfoDto={}",userInfoDto);
     }
 
 }
