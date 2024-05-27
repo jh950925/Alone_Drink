@@ -1,6 +1,6 @@
 package com.example.alone_drink.controller.user;
 
-import com.example.alone_drink.config.annotation.ResponseApiCode;
+import com.example.alone_drink.common.annotation.ResponseApiCode;
 import com.example.alone_drink.vo.dto.user.UserInfoDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;

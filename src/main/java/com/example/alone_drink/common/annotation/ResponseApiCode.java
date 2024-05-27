@@ -1,4 +1,4 @@
-package com.example.alone_drink.config.annotation;
+package com.example.alone_drink.common.annotation;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
