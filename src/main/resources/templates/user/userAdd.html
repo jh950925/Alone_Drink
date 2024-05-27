@@ -58,8 +58,9 @@
                     <input type="text" class="form-control" id="userEmail" name="userEmail">
                     <label>@</label>
                     <select class="form-select" id="emailDomain" name="emailDomain">
-                        <option value="naver.com">@naver.com</option>
-                        <option value="gmail.com">@gmail.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="gmail.com">daum.net</option>
                         <!-- 기타 도메인 옵션 추가 -->
                     </select>
                 </div>
@@ -98,7 +99,7 @@
                         <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소">
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary">주소 검색</button>
+                        <button th:onclick="btnSearchAdr()" type="button" class="btn btn-primary">주소 검색</button>
                     </div>
                 </div>
             </div>
@@ -108,4 +109,27 @@
     </form>
 </div>
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function btnSearchAdr() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                console.log("data : ", data);
+                var addr = '';
+                if (data.userSelectedType === 'R') {
+                    addr = data.roadAddress;
+                } else {
+                    addr = data.jibunAddress;
+                }
+
+                console.log("addr = ", addr);
+
+                document.getElementById("address1").value = addr;
+                document.getElementById("address2").focus();
+            }
+        }).open();
+    }
+</script>
+
 </html>
