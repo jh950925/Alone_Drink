@@ -28,6 +28,8 @@ dependencies {
     /** lombok impl**/
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 
     /** 타임리프 impl**/
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -53,6 +55,11 @@ dependencies {
 
     /** Email **/
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    /** Redis **/
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    implementation 'redis.clients:jedis:3.7.1'
 }
 tasks.named('test') {
     useJUnitPlatform()
