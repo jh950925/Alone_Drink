@@ -14,12 +14,15 @@ public class Mailservice {
     private final JavaMailSender mailSender;
     private final MessageSource messageSource;
 
-    public void sendEmail() {
+    public void sendEmail(String userEmail) {
         SimpleMailMessage message = new SimpleMailMessage();
         RandomCode randomCode = new RandomCode();
-        message.setFrom("jh950925@naver.com");
-        message.setTo("jh950925@gmail.com");
-        message.setSubject("제목테스트");
+
+        String subject = "인증 CODE";
+
+        message.setFrom("보내는사람 Email");
+        message.setTo(userEmail);
+        message.setSubject(subject);
         message.setText(randomCode.toString());
 
         mailSender.send(message);

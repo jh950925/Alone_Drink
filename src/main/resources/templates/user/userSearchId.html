@@ -32,7 +32,7 @@
         <div class="mb-3">
             <label for="authCode" class="form-label">인증번호</label>
             <input type="text" class="form-control" id="authCode" name="authCode">
-            <button type="button" class="btn btn-primary">보내기</button>
+            <button type="button" class="btn btn-primary" onclick="sendEmail()">보내기</button>
             <button type="button" class="btn btn-primary">인증</button>
         </div>
         <div class="mb-3">
@@ -42,4 +42,29 @@
     </form>
 </div>
 </body>
+<script>
+    function sendEmail() {
+        let email = document.getElementById("userEmail").value;
+
+        if (email === "") {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+
+        let url = "/api/user/ex/sendMail?userEmail=" + encodeURIComponent(email);
+
+        console.log("url = ", url);
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("서버 응답이 실패했습니다.");
+                }
+                alert("이메일이 성공적으로 전송되었습니다.");
+            })
+            .catch(error => {
+                alert("이메일 전송에 실패했습니다: " + error.message);
+            });
+    }
+</script>
 </html>

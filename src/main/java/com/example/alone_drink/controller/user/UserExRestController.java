@@ -6,8 +6,9 @@ import com.example.alone_drink.serviceImpl.user.UserExRestApi;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,10 +31,10 @@ public class UserExRestController {
             , tags = "외부 Rest Api"
     )
     @ResponseApiCode
-    @PostMapping("/sendMail")
-    public void sendEmailCode(){
+    @GetMapping("/sendMail")
+    public void sendEmailCode(@RequestParam String userEmail){
         log.info("send Mail");
-        mailservice.sendEmail();
+        mailservice.sendEmail(userEmail);
     }
     
 }
