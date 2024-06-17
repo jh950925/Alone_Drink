@@ -4,10 +4,14 @@ import com.example.alone_drink.common.redis.RedisRepository;
 import com.example.alone_drink.common.redis.RedisVo;
 import com.example.alone_drink.common.util.RandomCode;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import redis.clients.jedis.Jedis;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Slf4j
@@ -15,8 +19,11 @@ class RedisTest {
 
     @Autowired
     private RedisRepository repo;
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
     @Test
+    @DisplayName("JPA 사용 테스트 코드")
     void redisTest() {
         RandomCode randomCode = new RandomCode();
         log.info("random={}", randomCode.createCode());
@@ -37,34 +44,30 @@ class RedisTest {
         log.info("=============================================================");
 
         // 삭제
-//        repo.delete(vo);
+        repo.delete(vo);
     }
 
     @Test
-    void getRedis() {
+    @DisplayName("redisTemplate 사용 테스트 코드")
+    public void testRedisTemplate() {
+        // ValueOperations 객체를 통해 Redis와 상호작용
+        ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
 
-        String ip = "172.27.74.48";
-        int port = 6379;
+        // Redis에 데이터 저장
+        String key = "testKey";
+        String value = "testValue";
+        valueOps.set(key, value);
 
-        Jedis jedis = new Jedis(ip, port);
+        // 데이터 조회
+        String retrievedValue = valueOps.get(key);
+        assertThat(retrievedValue).isEqualTo(value);
 
-        try {
-            String response = jedis.ping();
+        log.info("retrievedValue = {}", retrievedValue);
 
-            System.out.println("redis 서버 응답 : " + response);
-
-            String test = jedis.get("Test");
-            System.out.println("-----------------------\n");
-            System.out.println("test = " + test);
-            System.out.println("\n-----------------------");
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            jedis.close();
-        }
-
+        // 데이터 삭제
+        redisTemplate.delete(key);
+        String deletedValue = valueOps.get(key);
+        assertThat(deletedValue).isNull();
     }
 
 }

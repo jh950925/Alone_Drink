@@ -4,7 +4,10 @@ import java.util.Random;
 
 public class RandomCode {
 
-    //랜덤 인증 코드 생성
+    /**
+     * 랜덤 인증 코드 생성
+     * @return String code
+     */
     public String createCode() {
         Random random = new Random();
         StringBuffer key = new StringBuffer();
