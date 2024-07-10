@@ -1,6 +1,5 @@
 package com.example.alone_drink.module.controller.user;
 
-import com.example.alone_drink.module.serviceImpl.user.UserExRestApi;
 import com.example.alone_drink.module.serviceImpl.user.mail.MailServiceImpl;
 import com.example.alone_drink.module.vo.dto.user.UserInfoDto;
 import com.example.alone_drink.common.annotation.ResponseApiCode;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/user/ex")
 public class UserExRestController {
 
-    private final UserExRestApi userExRestApi;
     private final MailServiceImpl mailService;
 
     /**
