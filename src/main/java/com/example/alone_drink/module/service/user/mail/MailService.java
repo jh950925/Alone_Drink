@@ -1,5 +1,7 @@
 package com.example.alone_drink.module.service.user.mail;
 
+import com.example.alone_drink.module.vo.dto.user.UserInfoDto;
+
 public interface MailService {
 
     /**
@@ -16,7 +18,7 @@ public interface MailService {
     /**
      * 저장된 인증코드 가져오기
      */
-    public void getStoreAuthCodeByEmail();
+    public void getStoreAuthCodeByEmail(UserInfoDto userINfoDto);
 
     /**
      * 받아온 인증코드 메일과 화면에서 입력된 인증코드 비교하기 - 인증완료
