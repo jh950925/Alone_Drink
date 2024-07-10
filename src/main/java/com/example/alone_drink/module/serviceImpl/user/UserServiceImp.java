@@ -1,13 +1,12 @@
 package com.example.alone_drink.module.serviceImpl.user;
 
-import com.example.alone_drink.config.modelMapper.ModelMapperConfig;
 import com.example.alone_drink.module.repository.user.UserInfoRepository;
-import com.example.alone_drink.module.repository.user.UserRepository;
 import com.example.alone_drink.module.service.user.UserService;
 import com.example.alone_drink.module.vo.dto.user.UserInfoDto;
 import com.example.alone_drink.module.vo.entity.user.UserInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -15,10 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImp implements UserService {
 
-    private final UserRepository userRepository;
     private final UserInfoRepository userInfoRepository;
 
-    private final ModelMapperConfig modelMapper;
+    private final ModelMapper modelMapper;
 
     /**
      * 회원가입
@@ -27,12 +25,12 @@ public class UserServiceImp implements UserService {
      */
     @Override
     public UserInfoDto registerUser(UserInfoDto userInfoDto) {
-
-        UserInfo userInfoEntity = modelMapper.modelMapper().map(userInfoDto, UserInfo.class);
-
+        UserInfo userInfoEntity = modelMapper.map(userInfoDto, UserInfo.class);
         userInfoRepository.save(userInfoEntity);
 
-        return null;
+        UserInfoDto result = modelMapper.map(userInfoEntity, UserInfoDto.class);
+
+        return result;
     }
 
     /**
@@ -42,6 +40,7 @@ public class UserServiceImp implements UserService {
      */
     @Override
     public UserInfoDto findUserId(String email) {
+
         return null;
     }
 
@@ -63,6 +62,8 @@ public class UserServiceImp implements UserService {
      */
     @Override
     public UserInfoDto login(String userId, String password) {
+
+
         return null;
     }
 

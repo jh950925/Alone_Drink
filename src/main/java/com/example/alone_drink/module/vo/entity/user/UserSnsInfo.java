@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -17,10 +21,9 @@ public class UserSnsInfo {
     @Comment("회원아이디")
     private String userId;
 
-    @OneToOne
-    @JoinColumn(name = "USER_NO")
+    @Column(name = "USER_NO")
     @Comment("회원번호")
-    private User user;
+    private int userNo;
 
     @Column(name = "USER_PASS", length = 30, nullable = false)
     @Comment("회원비밀번호")
@@ -54,11 +57,13 @@ public class UserSnsInfo {
     @Comment("회원코드")
     private String userCd;
 
-    @Column(name = "REG_DT", length = 8, nullable = false)
+    @CreatedDate
+    @Column(name = "REG_DT")
     @Comment("등록일")
-    private String regDt;
+    private LocalDateTime regDt;
 
-    @Column(name = "MOD_DT", length = 8, nullable = false)
+    @LastModifiedDate
+    @Column(name = "MOD_DT")
     @Comment("수정일")
-    private String modDt;
+    private LocalDateTime modDt;
 }

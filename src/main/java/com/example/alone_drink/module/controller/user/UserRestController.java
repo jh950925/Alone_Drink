@@ -1,9 +1,13 @@
 package com.example.alone_drink.module.controller.user;
 
-import com.example.alone_drink.module.vo.dto.user.UserInfoDto;
 import com.example.alone_drink.common.annotation.ResponseApiCode;
+import com.example.alone_drink.config.api.ApiResponse;
+import com.example.alone_drink.module.serviceImpl.user.UserServiceImp;
+import com.example.alone_drink.module.vo.dto.user.UserInfoDto;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,11 +15,14 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/user")
 public class UserRestController {
 
+    private final UserServiceImp userService;
+
     /**
-     *  회원가입
+     * 회원가입
      */
     @Operation(summary = "회원가입 요청"
             , description = "회원 정보가 저장됩니다."
@@ -23,8 +30,8 @@ public class UserRestController {
     )
     @ResponseApiCode
     @PostMapping("/add/data")
-    public void userAdd(){
-
+    public ResponseEntity<ApiResponse<UserInfoDto>> userAdd(UserInfoDto userInfoDto) {
+        return ResponseEntity.ok(ApiResponse.sucess(userService.registerUser(userInfoDto)));
     }
 
     /**
@@ -36,8 +43,9 @@ public class UserRestController {
     )
     @ResponseApiCode
     @PostMapping("/search/id/data")
-    public void userSearchId(){
+    public ResponseEntity<ApiResponse<UserInfoDto>> userSearchId(UserInfoDto userInfoDto){
 
+        return null;
     }
 
     /**
@@ -49,8 +57,9 @@ public class UserRestController {
     )
     @ResponseApiCode
     @PostMapping("/search/pass/data")
-    public void userSearchPass(){
+    public ResponseEntity<ApiResponse<UserInfoDto>> userSearchPass(UserInfoDto userInfoDto){
 
+        return null;
     }
 
     /**
@@ -62,10 +71,12 @@ public class UserRestController {
     )
     @ResponseApiCode
     @GetMapping("/login/data")
-    public void logIn(@ModelAttribute UserInfoDto userInfoDto) {
+    public ResponseEntity<ApiResponse<UserInfoDto>> logIn(@ModelAttribute UserInfoDto userInfoDto) {
         log.info("===================================");
         log.info("Login request received with username: {}", userInfoDto.getUserId());
         log.info("===================================");
+
+        return null;
     }
 
     /**
@@ -77,9 +88,11 @@ public class UserRestController {
     )
     @ResponseApiCode
     @PostMapping("/logout/data")
-    public void logout(@RequestBody UserInfoDto userInfoDto){
+    public ResponseEntity<ApiResponse<UserInfoDto>> logout(@RequestBody UserInfoDto userInfoDto){
         log.info("login");
         log.info("UserInfoDto={}",userInfoDto);
+
+        return null;
     }
 
 }
