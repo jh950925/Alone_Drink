@@ -15,8 +15,8 @@ import org.springframework.data.redis.core.RedisHash;
 public class RedisVo {
 
     @Id
-    private String id;
-    private String authCode;
+    private String id;          // 사용자가 보낼 이메일
+    private String authCode;    // 인증코드
 
     public RedisVo(String id, String authCode) {
         this.id = id;
