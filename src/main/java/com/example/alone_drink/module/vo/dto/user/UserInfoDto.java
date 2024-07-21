@@ -34,5 +34,7 @@ public class UserInfoDto {
     private String userAdr;         // 사용자주소
 
     private String userCd;          // 사용자코드
+    
+    private String AuthYn;          // 인증여부
 
 }
