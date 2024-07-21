@@ -36,6 +36,8 @@ public class MailServiceImpl implements MailService {
         RedisVo redisVo = new RedisVo();
         redisVo.setId(email);
         redisVo.setAuthCode(authCode);
+
+        log.info("redisVo:{}", redisVo);
         redisService.setData(redisVo);
     }
 
