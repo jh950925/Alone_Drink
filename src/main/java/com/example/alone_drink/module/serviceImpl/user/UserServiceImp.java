@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -35,22 +37,31 @@ public class UserServiceImp implements UserService {
 
     /**
      * 회원 아이디 찾기
-     * @param email 
      * @return UserInfoDto
      */
     @Override
-    public UserInfoDto findUserId(String email) {
+    public UserInfoDto findUserId(UserInfoDto userInfoDto) {
+        UserInfoDto result = new UserInfoDto();
 
-        return null;
+        UserInfo userInfoEntity = modelMapper.map(userInfoDto, UserInfo.class);
+
+        Optional<UserInfo> userInfoOptional = userInfoRepository.findById(userInfoEntity.getUserId());
+
+        if (userInfoOptional.isPresent()) {
+            UserInfo userInfo = userInfoOptional.get();
+            result = modelMapper.map(userInfo, UserInfoDto.class);
+        }
+        return result;
     }
 
     /**
      * 회원 비밀번호 찾기
-     * @param userId 
      * @return USerInfoDto
      */
     @Override
-    public UserInfoDto findUserPassword(String userId) {
+    public UserInfoDto findUserPassword(UserInfoDto userInfoDto) {
+        UserInfo userInfo = modelMapper.map(userInfoDto, UserInfo.class);
+
         return null;
     }
 

@@ -8,7 +8,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * 사이트 내부 RestController
@@ -44,8 +48,7 @@ public class UserRestController {
     @ResponseApiCode
     @PostMapping("/search/id/data")
     public ResponseEntity<ApiResponse<UserInfoDto>> userSearchId(UserInfoDto userInfoDto){
-
-        return null;
+        return ResponseEntity.ok(ApiResponse.sucess(userService.findUserId(userInfoDto)));
     }
 
     /**
@@ -58,8 +61,7 @@ public class UserRestController {
     @ResponseApiCode
     @PostMapping("/search/pass/data")
     public ResponseEntity<ApiResponse<UserInfoDto>> userSearchPass(UserInfoDto userInfoDto){
-
-        return null;
+        return ResponseEntity.ok(ApiResponse.sucess(userService.findUserPassword(userInfoDto)));
     }
 
     /**
@@ -70,12 +72,8 @@ public class UserRestController {
             , tags = "User LogIn / LogOut"
     )
     @ResponseApiCode
-    @GetMapping("/login/data")
-    public ResponseEntity<ApiResponse<UserInfoDto>> logIn(@ModelAttribute UserInfoDto userInfoDto) {
-        log.info("===================================");
-        log.info("Login request received with username: {}", userInfoDto.getUserId());
-        log.info("===================================");
-
+    @PostMapping("/login/data")
+    public ResponseEntity<ApiResponse<Map<String , Object>>> logIn(UserInfoDto userInfoDto) {
         return null;
     }
 
@@ -88,10 +86,7 @@ public class UserRestController {
     )
     @ResponseApiCode
     @PostMapping("/logout/data")
-    public ResponseEntity<ApiResponse<UserInfoDto>> logout(@RequestBody UserInfoDto userInfoDto){
-        log.info("login");
-        log.info("UserInfoDto={}",userInfoDto);
-
+    public ResponseEntity<ApiResponse<Map<String, Object> >> logout(){
         return null;
     }
 
